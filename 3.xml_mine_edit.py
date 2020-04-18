@@ -116,17 +116,16 @@ if __name__ == "__main__":
 
                 # TODO 任务1：插入新节点trackid、 occluded
                 nodes_1 = find_nodes(tree, "object/bndbox")
-
-                # 如果窗口中包含多个目标，进行编号
+                #
+                # # 如果窗口中包含多个目标，进行编号
                 vi = 0
                 # 插入到父节点之下
                 for node in nodes_1:
-                    vi = int(vi) + 1
-                    vi = "%04d" % vi
                     a = create_node("track_id", {}, str(vi))
                     b = create_node("occluded", {}, str(1))
                     node.append(a)
                     node.append(b)
+                    vi = int(vi) + 1
 
                 # TODO 任务2修改filename文件名
                 # 找到父节点
@@ -164,4 +163,4 @@ if __name__ == "__main__":
 
                 # TODO 公共输出
                 write_xml(tree, B_d)
-                # print(B_d + 'is finished')
+                print(B_d + 'is finished')
