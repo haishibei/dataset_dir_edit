@@ -115,13 +115,13 @@ if __name__ == "__main__":
                 tree = read_xml(B_d)
 
                 # TODO 任务1：插入新节点trackid、 occluded
-                nodes_1 = find_nodes(tree, "object/bndbox")
-                #
+                nodes_1 = find_nodes(tree, "object")
+
                 # # 如果窗口中包含多个目标，进行编号
                 vi = 0
                 # 插入到父节点之下
                 for node in nodes_1:
-                    a = create_node("track_id", {}, str(vi))
+                    a = create_node("trackid", {}, str(vi))
                     b = create_node("occluded", {}, str(1))
                     node.append(a)
                     node.append(b)
