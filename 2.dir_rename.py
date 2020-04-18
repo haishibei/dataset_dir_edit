@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from os.path import isdir, join
 from os import listdir, rename
 from glob import glob
@@ -15,8 +17,8 @@ for A in A_s:
     if isdir(A):
         B_s = glob(join(rec, A, '*'))
         for B in B_s:
-            num_0 = int(B.split('\\')[-1].split('.')[-2])
-            suffix = B.split('\\')[-1].split('.')[-1]
+            num_0 = int(B.split('/')[-1].split('.')[-2])
+            suffix = B.split('/')[-1].split('.')[-1]
             num_1 = str("%06d" % (num_0 - 1))
             B_n_d = join(rec, A, num_1 + '.' + suffix)
             rename(B, B_n_d)

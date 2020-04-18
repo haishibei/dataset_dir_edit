@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from os import listdir, rename
 from os.path import join, isdir
 import shutil
