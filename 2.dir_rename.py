@@ -6,9 +6,10 @@ from glob import glob
 
 """
 本程序的作用是：将文件夹的名称（是数字）减1，并进行左补零(8位对齐)
+（下面是删减功能：
 可调整的参数如下：
 1.num = int(A) - 1， 如果不是减0，可更改为其他数字
-  比如改为0，则文件名称（数字）大小不变，仅仅进行形式变换
+  比如改为0，则文件名称（数字）大小不变，仅仅进行形式变换）
 """
 
 rec = './'
@@ -22,6 +23,7 @@ for A in A_s:
             num_1 = str("%06d" % (num_0 - 1))
             B_n_d = join(rec, A, num_1 + '.' + suffix)
             rename(B, B_n_d)
+            print('{} is finished'.format(B_n_d))
 
 #
 # A_s = sorted(listdir(rec))

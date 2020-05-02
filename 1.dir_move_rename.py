@@ -18,13 +18,13 @@ moving_obj = 'Annotations'   # 1.要移动Annotations（标注）还是JPEGImage
 
 if moving_obj == 'Annotations':
     moving_obj_ = 'Annotations'  # Annotations对应Annotations
-elif moving_obj == 'Annotations':
-    moving_obj_ = 'Data'         # Annotations对应Data
+elif moving_obj == 'JPEGImages':
+    moving_obj_ = 'Data'         # Data对应Data
 dst_ = join('/media/data/zhibao_jiao/mydateset/ILSVRC2015', moving_obj_,
-            'VID/train/ILSVRC2015_VID_train_0001')      # 2.目标路径
+            'VID/train/ILSVRC2015_VID_train_0000')      # 2.目标路径
 
 prefix = 'mydataset_train_'         # 3.文件夹前缀
-num_start = 10      # 4.起始编号
+num_start = (-1)                     # 4.在原数据集的数量基础上进行增加
 
 rec = './'
 A_s = listdir(rec)
@@ -34,7 +34,8 @@ for vi, A in enumerate(sorted(A_s)):
         B_s = listdir(A_d)
         for B in B_s:
             B_d = join(A_d, B)
-            num = "%08d" % (vi + num_start)
+            num_prefix = int(B_d.split('/')[-2].split('V')[0])
+            num = "%08d" % (num_prefix + num_start)
             if str(B) == moving_obj:
                 dst = join(dst_, prefix+str(num))
                 shutil.copytree(B_d, dst)
